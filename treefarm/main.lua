@@ -3,7 +3,7 @@ local farmx=16 -- (farmx-1)mod3=0
 local farmy=4 -- (farmy-1)mod3=0
 
 function placeSapling()
-    turtle.select(2) 
+    turtle.select(16) 
     turtle.place()   
     turtle.select(1)
 end
