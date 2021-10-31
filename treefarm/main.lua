@@ -1,8 +1,14 @@
 local sqrdist=3
 local farmx=16 -- (farmx-1)mod3=0
 local farmy=4 -- (farmy-1)mod3=0
-destroyTree()
-placeSapling()
+while true do
+
+    destroyTree()
+    if not turtle.detect() then
+        placeSapling()    
+    end
+    
+end
 
 function placeSapling()
     turtle.select(2) 
