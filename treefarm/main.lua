@@ -2,6 +2,14 @@ local sqrdist=3
 local farmx=16 -- (farmx-1)mod3=0
 local farmy=4 -- (farmy-1)mod3=0
 destroyTree()
+placeSapling()
+
+function placeSapling()
+    turtle.select(2) 
+    turtle.place()   
+    turtle.select(1)
+end
+
 
 function destroyTree() 
     if turtle.compare() then
