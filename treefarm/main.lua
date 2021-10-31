@@ -10,7 +10,7 @@ while true do
         turtle.digUp()
         turtle.up()
     end
-    while turtle.detectDown() do  
+    while not turtle.detectDown() do  
         turtle.down()
     end
       turtle.back()
