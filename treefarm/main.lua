@@ -24,6 +24,4 @@ local function destroyTree()
     end
 end
 
-while true do
-    destroyTree()
-end
+destroyTree()
