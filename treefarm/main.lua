@@ -70,7 +70,6 @@ local function destroyTree()
             turtle.down()
         end
         turtle.back()
-        placeSapling()
 
         return true
     end
