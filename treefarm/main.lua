@@ -53,9 +53,19 @@ local function getIdDown()
 end
 
 local function placeSapling()
-    turtle.select(16)
-    turtle.place()
-    turtle.select(1)
+    local origSlot = turtle.getSelectedSlot()
+
+    for i = 1, 16, 1 do
+        local slotData = turtle.getItemDetail(i)
+
+        if getType(slotData.name) == 'sapling' then
+            select(i)
+            turtle.place()
+            break
+        end
+    end
+
+    turtle.select(origSlot)
 end
 
 local function destroyTree()
