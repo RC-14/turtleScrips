@@ -89,3 +89,4 @@ local function destroyTree()
 end
 
 destroyTree()
+placeSapling()
