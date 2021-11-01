@@ -59,10 +59,10 @@ local function placeSapling()
 end
 
 local function destroyTree()
-    if turtle.compare() then
+    if getType(getId()) == 'log' then
         turtle.dig()
         turtle.forward()
-        while turtle.detectUp() do
+        while getType(getIdUp()) == 'log' do
             turtle.digUp()
             turtle.up()
         end
