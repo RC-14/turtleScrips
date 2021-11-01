@@ -83,7 +83,9 @@ local function destroyTree()
         end
         turtle.back()
 
+
         return true
+
     end
 
     return false
