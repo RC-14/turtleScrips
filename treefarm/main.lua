@@ -22,6 +22,36 @@ local function getType(id)
     return 'other'
 end
 
+local function getId()
+    local success, data = turtle.inspect()
+
+    if success then
+        return data.name
+    end
+
+    return 'minecraft:air'
+end
+
+local function getIdUp()
+    local success, data = turtle.inspectUp()
+
+    if success then
+        return data.name
+    end
+
+    return 'minecraft:air'
+end
+
+local function getIdDown()
+    local success, data = turtle.inspectDown()
+
+    if success then
+        return data.name
+    end
+
+    return 'minecraft:air'
+end
+
 local function placeSapling()
     turtle.select(16)
     turtle.place()
