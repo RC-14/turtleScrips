@@ -59,13 +59,11 @@ local function placeSapling()
         local slotData = turtle.getItemDetail(i)
 
         if slotData == nil then
-            goto continue
         elseif getType(slotData.name) == 'sapling' then
             select(i)
             turtle.place()
             break
         end
-        ::continue::
     end
 
     turtle.select(origSlot)
