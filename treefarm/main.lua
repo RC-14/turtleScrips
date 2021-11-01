@@ -60,7 +60,7 @@ local function placeSapling()
 
         if slotData == nil then
         elseif getType(slotData.name) == 'sapling' then
-            select(i)
+            turtle.select(i)
             turtle.place()
             break
         end
