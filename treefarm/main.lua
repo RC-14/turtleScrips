@@ -21,6 +21,9 @@ function destroyTree()
         end
         turtle.back()
         placeSapling()
+        if turtle.getFuelLevel()<=100 then
+            turtle.refuel(1+((100-turtle.getFuelLevel())/15))
+        end
     end
 end
 
