@@ -23,7 +23,7 @@ local function download(url, path)
     local response = http.get(url)
     local status = response.getResponseCode()
 
-    if not (status == 0 or (status >= 200 and status < 400)) then
+    if status ~= 0 and (status < 200 or status >= 400) then
         return false, 'http', status -- request was not successfull
     end
 
