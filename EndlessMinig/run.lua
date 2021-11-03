@@ -97,4 +97,16 @@ if not error then
     end
 end
 
-fs.makeDir(librariesDir)
+if not error then
+    fs.makeDir(librariesDir)
+
+    for i, filename in ipairs(libraries) do
+        fs.delete(librariesDir .. '/' .. filename)
+        fs.move(tmpDir .. librariesPath .. '/' .. filename, librariesDir .. '/' .. filename)
+    end
+
+    for i, filename in ipairs(files) do
+        fs.delete(installDir .. '/' .. filename)
+        fs.move(tmpDir .. filesPath .. '/' .. filename, installDir .. '/' .. filename)
+    end
+end
