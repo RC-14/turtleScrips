@@ -61,6 +61,38 @@ local librariesDir = librariesPath
 local tmpDir = '/temp'
 local error = false
 
-fs.makeDir(librariesDir)
-fs.makeDir(tmpDir .. filesPath)
 fs.makeDir(tmpDir .. librariesPath)
+
+for i, filename in ipairs(libraries) do
+    local success, error, reason =
+        download(repoURL .. librariesPath .. '/' .. filename, tmpDir .. librariesPath .. '/' .. filename)
+
+    if not success then
+        print('ERROR: ' .. error)
+        print(reason)
+        print('File:' .. filename)
+        print('Path: ' .. tmpDir .. librariesPath)
+        print('URL: ' .. repoURL .. librariesPath .. filename)
+
+        error = true
+    end
+end
+
+fs.makeDir(tmpDir .. filesPath)
+
+for i, filename in ipairs(files) do
+    local success, error, reason =
+        download(repoURL .. filesPath .. '/' .. filename, tmpDir .. filesPath .. '/' .. filename)
+
+    if not success then
+        print('ERROR: ' .. error)
+        print(reason)
+        print('File:' .. filename)
+        print('Path: ' .. tmpDir .. filesPath)
+        print('URL: ' .. repoURL .. filesPath .. '/' .. filename)
+
+        error = true
+    end
+end
+
+fs.makeDir(librariesDir)
