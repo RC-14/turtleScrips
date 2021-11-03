@@ -115,3 +115,5 @@ fs.delete(tmpDir .. librariesPath)
 fs.delete(tmpDir .. filesPath)
 
 shell.run(installDir .. '/main.lua', unpack(arg))
+
+return error and 1 or 0
