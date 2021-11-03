@@ -3,9 +3,7 @@
 	and executes main.lua with the arguments
 	it was executed with.
 ]]
---
-
-local baseURI = 'https://github.com/RC-14/turtleScrips'
+local repoURL = 'https://github.com/RC-14/turtleScrips'
 local filesPath = '/EndlessMining'
 local librariesPath = '/libraries'
 
@@ -15,7 +13,6 @@ local librariesPath = '/libraries'
 ]] local files = {
     'main.lua'
 }
---
 
 --[[
 	All files in the libraries folder
