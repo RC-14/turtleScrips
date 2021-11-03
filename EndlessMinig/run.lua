@@ -63,11 +63,11 @@ local error = false
 
 fs.makeDir(tmpDir .. librariesPath)
 
-for i, filename in ipairs(libraries) do
+for i, filename in ipairs(libraries) do -- download all libraries to the temporary directory
     local success, error, reason =
         download(repoURL .. librariesPath .. '/' .. filename, tmpDir .. librariesPath .. '/' .. filename)
 
-    if not success then
+    if not success then -- print error message and info
         print('ERROR: ' .. error)
         print(reason)
         print('File:' .. filename)
@@ -81,11 +81,11 @@ end
 if not error then
     fs.makeDir(tmpDir .. filesPath)
 
-    for i, filename in ipairs(files) do
+    for i, filename in ipairs(files) do -- download all files to the temporary directory
         local success, error, reason =
             download(repoURL .. filesPath .. '/' .. filename, tmpDir .. filesPath .. '/' .. filename)
 
-        if not success then
+        if not success then -- print error message and info
             print('ERROR: ' .. error)
             print(reason)
             print('File:' .. filename)
@@ -97,7 +97,7 @@ if not error then
     end
 end
 
-if not error then
+if not error then -- move libraries all and files from the temporary directory to the correct directories
     fs.makeDir(librariesDir)
 
     for i, filename in ipairs(libraries) do
@@ -111,9 +111,9 @@ if not error then
     end
 end
 
-fs.delete(tmpDir .. librariesPath)
+fs.delete(tmpDir .. librariesPath) -- delete temporary files and folders
 fs.delete(tmpDir .. filesPath)
 
-shell.run(installDir .. '/main.lua', unpack(arg))
+shell.run(installDir .. '/main.lua', unpack(arg)) -- run main.lua and use our arguments for it
 
-return error and 1 or 0
+return error and 1 or 0 -- return 1 if there was an error and 0 if not
