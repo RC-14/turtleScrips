@@ -55,3 +55,5 @@ local function download(url, path)
 
     return true -- downloaded the file successfully
 end
+
+local error = false
