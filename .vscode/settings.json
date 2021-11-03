@@ -1,5 +1,3 @@
 {
-    "Lua.diagnostics.globals": [
-        "turtle"
-    ]
+	"Lua.diagnostics.globals": ["turtle", "http"]
 }
