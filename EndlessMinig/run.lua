@@ -20,6 +20,10 @@ local librariesPath = '/libraries'
 ]] local libraries = {}
 
 local function download(url, path)
+    if url == nil or path == nil then
+        return false, 'param', "paraneters can't be empty" -- function was called with an empty parameter
+    end
+
     local response = http.get(url)
     local status = response.getResponseCode()
 
