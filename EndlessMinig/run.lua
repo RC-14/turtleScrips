@@ -110,3 +110,6 @@ if not error then
         fs.move(tmpDir .. filesPath .. '/' .. filename, installDir .. '/' .. filename)
     end
 end
+
+fs.delete(tmpDir .. librariesPath)
+fs.delete(tmpDir .. filesPath)
