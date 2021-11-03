@@ -78,20 +78,22 @@ for i, filename in ipairs(libraries) do
     end
 end
 
-fs.makeDir(tmpDir .. filesPath)
+if not error then
+    fs.makeDir(tmpDir .. filesPath)
 
-for i, filename in ipairs(files) do
-    local success, error, reason =
-        download(repoURL .. filesPath .. '/' .. filename, tmpDir .. filesPath .. '/' .. filename)
+    for i, filename in ipairs(files) do
+        local success, error, reason =
+            download(repoURL .. filesPath .. '/' .. filename, tmpDir .. filesPath .. '/' .. filename)
 
-    if not success then
-        print('ERROR: ' .. error)
-        print(reason)
-        print('File:' .. filename)
-        print('Path: ' .. tmpDir .. filesPath)
-        print('URL: ' .. repoURL .. filesPath .. '/' .. filename)
+        if not success then
+            print('ERROR: ' .. error)
+            print(reason)
+            print('File:' .. filename)
+            print('Path: ' .. tmpDir .. filesPath)
+            print('URL: ' .. repoURL .. filesPath .. '/' .. filename)
 
-        error = true
+            error = true
+        end
     end
 end
 
