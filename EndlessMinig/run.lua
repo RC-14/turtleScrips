@@ -53,5 +53,5 @@ local function download(url, path)
 
     file.close()
 
-    return true, url, path -- downloaded the file successfully
+    return true -- downloaded the file successfully
 end
