@@ -57,5 +57,6 @@ local function download(url, path)
 end
 
 local installDir = fs.getDir(shell.getRunningProgram())
+local librariesDir = '/libraries'
 local tmpDir = '/temp'
 local error = false
