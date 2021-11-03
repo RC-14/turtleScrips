@@ -60,3 +60,7 @@ local installDir = fs.getDir(shell.getRunningProgram())
 local librariesDir = librariesPath
 local tmpDir = '/temp'
 local error = false
+
+fs.makeDir(librariesDir)
+fs.makeDir(tmpDir .. filesPath)
+fs.makeDir(tmpDir .. librariesPath)
