@@ -56,4 +56,6 @@ local function download(url, path)
     return true -- downloaded the file successfully
 end
 
+local installDir = fs.getDir(shell.getRunningProgram())
+local tmpDir = '/temp'
 local error = false
