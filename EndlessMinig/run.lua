@@ -4,3 +4,5 @@
 	it was executed with.
 ]]
 --
+
+local baseURI = 'https://github.com/RC-14/turtleScrips'
