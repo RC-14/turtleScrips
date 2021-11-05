@@ -114,6 +114,4 @@ end
 fs.delete(tmpDir .. librariesPath) -- delete temporary files and folders
 fs.delete(tmpDir .. filesPath)
 
-shell.run(installDir .. '/main.lua', unpack(arg)) -- run main.lua and use our arguments for it
-
 return error and 1 or 0 -- return 1 if there was an error and 0 if not
