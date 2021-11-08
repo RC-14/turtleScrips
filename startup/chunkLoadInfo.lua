@@ -1,5 +1,6 @@
 shell.run('clear')
 print('!!! DO NOT TOUCH !!!')
-print("")
+print('')
 print('For chunk loading only!')
+print('')
 print('You WILL break stuff if you\nbreak/shutdown/take away\nthis turtle.')
