@@ -1,4 +1,4 @@
-local ta = require 'libraries.turtleAdditions'
+local ta = require '/libraries/turtleAdditions'
 
 local length, width = ...
 
