@@ -1,3 +1,12 @@
 {
-	"Lua.diagnostics.globals": ["turtle", "http", "fs", "shell", "sleep"]
+	"Lua.diagnostics.globals": [
+		"turtle",
+		"http",
+		"fs",
+		"shell",
+		"sleep"
+	],
+	"Lua.diagnostics.disable": [
+		"undefined-field"
+	]
 }
