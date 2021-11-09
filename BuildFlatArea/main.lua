@@ -57,6 +57,6 @@ local function placeBlock()
 end
 
 for i = 1, width do
-    for i = 1, length do
+    for j = 1, length do
     end
 end
