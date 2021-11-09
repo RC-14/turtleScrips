@@ -3,7 +3,7 @@
 	and executes main.lua with the arguments
 	it was executed with.
 ]]
-local repoURL = 'https://github.com/RC-14/turtleScrips'
+local baseURL = 'https://raw.githubusercontent.com/RC-14/turtleScrips/main'
 local filesPath = '/EndlessMining'
 local librariesPath = '/libraries'
 
@@ -65,14 +65,14 @@ fs.makeDir(tmpDir .. librariesPath)
 
 for i, filename in ipairs(libraries) do -- download all libraries to the temporary directory
     local success, error, reason =
-        download(repoURL .. librariesPath .. '/' .. filename, tmpDir .. librariesPath .. '/' .. filename)
+        download(baseURL .. librariesPath .. '/' .. filename, tmpDir .. librariesPath .. '/' .. filename)
 
     if not success then -- print error message and info
         print('ERROR: ' .. error)
         print(reason)
         print('File:' .. filename)
         print('Path: ' .. tmpDir .. librariesPath)
-        print('URL: ' .. repoURL .. librariesPath .. filename)
+        print('URL: ' .. baseURL .. librariesPath .. filename)
 
         error = true
     end
@@ -83,14 +83,14 @@ if not error then
 
     for i, filename in ipairs(files) do -- download all files to the temporary directory
         local success, error, reason =
-            download(repoURL .. filesPath .. '/' .. filename, tmpDir .. filesPath .. '/' .. filename)
+            download(baseURL .. filesPath .. '/' .. filename, tmpDir .. filesPath .. '/' .. filename)
 
         if not success then -- print error message and info
             print('ERROR: ' .. error)
             print(reason)
             print('File:' .. filename)
             print('Path: ' .. tmpDir .. filesPath)
-            print('URL: ' .. repoURL .. filesPath .. '/' .. filename)
+            print('URL: ' .. baseURL .. filesPath .. '/' .. filename)
 
             error = true
         end
