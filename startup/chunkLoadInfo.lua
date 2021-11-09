@@ -10,3 +10,6 @@ print('shutdown ...')
 print('take away ...')
 print('')
 print('... this turtle or its chunk loader.')
+while true do
+    sleep(5)
+end
