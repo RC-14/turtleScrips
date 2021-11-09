@@ -1,4 +1,4 @@
-local ta = require 'libraries.turtleAdditions'
+local ta = require '/libraries/turtleAdditions'
 
 local TURTLECHARGER_ID = 'peripheralsplusone:rf_charger'
 local ENERGYCELL_ID = 'thermalexpansion:cell'
