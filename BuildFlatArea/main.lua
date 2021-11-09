@@ -70,6 +70,17 @@ local function placeBlock()
     return success
 end
 
+local function moveBack()
+    if not turtle.back() then
+        ta.uTurn()
+        turtle.dig()
+        ta.uTurn()
+        if not turtle.back() then
+            error("couldn't move backwards")
+        end
+    end
+end
+
 for i = 1, width do
     for j = 1, length do
     end
