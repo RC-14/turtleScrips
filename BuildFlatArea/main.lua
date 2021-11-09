@@ -32,6 +32,20 @@ if length < 1 or width < 1 or requiredFuelLevel < 1 then
     error("length, width and requiredFuelLevel can't be lower than 1")
 end
 
+local function refuelIfNeeded()
+    if turtle.getFuelLevel() ~= 0 then
+        return
+    end
+
+    print('Waiting for refuel...')
+    print("(Don't try to use the turtles inventory, it won't work.)")
+
+    while turtle.getFuelLevel() < requiredFuelLevel do
+        -- don't search the inventory for fuel because it's either a block or it got droped with placeBlock
+        sleep(10)
+    end
+end
+
 local function placeBlock()
     local origSlot = turtle.getSelectedSlot()
     local success = false
