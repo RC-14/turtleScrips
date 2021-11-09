@@ -50,24 +50,30 @@ local function placeBlock()
     local origSlot = turtle.getSelectedSlot()
     local success = false
 
-    for i = 1, 16 do
-        local count = turtle.getItemCount(i)
+    repeat
+        for i = 1, 16 do
+            local count = turtle.getItemCount(i)
 
-        if count ~= 0 then
-            turtle.select(i)
-            success = turtle.place()
+            if count ~= 0 then
+                turtle.select(i)
+                success = turtle.place()
 
-            if not success then
-                turtle.drop()
-            else
-                break
+                if not success then
+                    turtle.drop()
+                else
+                    break
+                end
             end
         end
-    end
+
+        if not success then
+            print('out of blocks')
+            print('waiting for more...')
+            os.pullEvent() -- wait for any event to occur (a change in the inventory fires an event)
+        end
+    until success
 
     turtle.select(origSlot)
-
-    return success
 end
 
 local function moveBack()
