@@ -1,14 +1,17 @@
 local ta = {}
 
-function ta.uTurn(right) -- Let the turtle make a U turn. (if the optional parameter is true it uses turnRight instead of turnLeft)
-    local turnFunc = turtle.turnLeft
+function ta.searchInventoryFor(itemID) -- Searches the inventory of the turtle for slots with items that have the given item id and returns a table with the results.
+    local slots = {}
 
-    if right then
-        turnFunc = turtle.turnRight
+    for i = 1, 16 do
+        local item = turtle.getItemDetail(i)
+
+        if not item == nil and item.name == itemID then
+            slots[#slots + 1] = i
+        end
     end
 
-    turnFunc()
-    turnFunc()
+    return slots
 end
 
 function ta.getId() -- Returns the item id of the block in front of the turtle.
@@ -41,18 +44,15 @@ function ta.getIdDown() -- Returns the item id of the block below the turtle.
     return 'minecraft:air' -- success is false if the block is air
 end
 
-function ta.searchInventoryFor(itemID) -- Searches the inventory of the turtle for slots with items that have the given item id and returns a table with the results.
-    local slots = {}
+function ta.uTurn(right) -- Let the turtle make a U turn. (if the optional parameter is true it uses turnRight instead of turnLeft)
+    local turnFunc = turtle.turnLeft
 
-    for i = 1, 16 do
-        local item = turtle.getItemDetail(i)
-
-        if not item == nil and item.name == itemID then
-            slots[#slots + 1] = i
-        end
+    if right then
+        turnFunc = turtle.turnRight
     end
 
-    return slots
+    turnFunc()
+    turnFunc()
 end
 
 return ta
