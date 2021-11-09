@@ -32,6 +32,29 @@ if length < 1 or width < 1 or requiredFuelLevel < 1 then
     error("length, width and requiredFuelLevel can't be lower than 1")
 end
 
+local function placeBlock()
+    local origSlot = turtle.getSelectedSlot()
+    local success = false
+
+    for i = 1, 16 do
+        local count = turtle.getItemCount(i)
+
+        if count ~= 0 then
+            turtle.select(i)
+            success = turtle.place()
+
+            if not success then
+                turtle.drop()
+            else
+                break
+            end
+        end
+    end
+
+    turtle.select(origSlot)
+
+    return success
+end
 
 for i = 1, width do
     for i = 1, length do
