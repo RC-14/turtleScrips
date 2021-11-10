@@ -74,3 +74,7 @@ end
 if hasTurned then
     ta.uTurn()
 end
+
+if not (hasCharger and hasEnergyCell and enderChestCounter == 2) then
+    error()
+end
