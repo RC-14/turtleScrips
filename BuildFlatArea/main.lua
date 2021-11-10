@@ -3,10 +3,7 @@ local ta = require '/libraries/turtleAdditions'
 local length, width, requiredFuelLevel = ...
 
 local function showUsage()
-    local tmp = string.find(string.reverse(shell.getRunningProgram()), '/')
-    local programName = string.sub(shell.getRunningProgram(), -1 * tmp + 1)
-
-    print(programName .. ' length width [requiredFuelLevel]')
+    print(fs.getName(shell.getRunningProgram()) .. ' length width [requiredFuelLevel]')
     print()
     print('width')
     print('|')
