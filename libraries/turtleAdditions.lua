@@ -99,8 +99,7 @@ function ta.uTurn(right) -- Let the turtle make a U turn. (if the optional param
         turnFunc = turtle.turnRight
     end
 
-    turnFunc()
-    turnFunc()
+    return turnFunc() and turnFunc()
 end
 
 return ta
