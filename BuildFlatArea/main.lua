@@ -71,7 +71,7 @@ local function placeBlock(place)
         if not success then
             print('out of blocks')
             print('waiting for more...')
-            os.pullEvent() -- wait for any event to occur (a change in the inventory fires an event)
+            os.pullEvent('turtle_inventory') -- wait for changes to the turtles inventory
         end
     until success
 
