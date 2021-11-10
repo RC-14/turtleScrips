@@ -47,7 +47,7 @@ local function refuelIfNeeded()
 end
 
 local function placeBlock(place)
-    place = place or turtle.place()
+    place = place or turtle.place
 
     local origSlot = turtle.getSelectedSlot()
     local success = false
