@@ -1,4 +1,4 @@
-shell.run('clear')
+term.clear()
 print('!!! DO NOT TOUCH !!!')
 print('')
 print('For chunk loading only!')
