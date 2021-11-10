@@ -46,7 +46,9 @@ local function refuelIfNeeded()
     end
 end
 
-local function placeBlock()
+local function placeBlock(place)
+    place = place or turtle.place()
+
     local origSlot = turtle.getSelectedSlot()
     local success = false
 
@@ -56,7 +58,7 @@ local function placeBlock()
 
             if count ~= 0 then
                 turtle.select(i)
-                success = turtle.place()
+                success = place()
 
                 if not success then
                     turtle.drop()
