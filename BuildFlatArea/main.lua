@@ -89,7 +89,41 @@ local function moveBack()
     end
 end
 
+local turn = turtle.turnRight
+
+ta.uTurn()
 for i = 1, width do
-    for j = 1, length do
+    for j = 1, length - 1 do
+        refuelIfNeeded()
+
+        moveBack()
+        placeBlock()
+    end
+
+    if i < width then
+        turn()
+
+        moveBack()
+        placeBlock()
+
+        turn()
+
+        if turn == turtle.turnLeft then
+            turn = turtle.turnRight
+        else
+            turn = turtle.turnLeft
+        end
+    else
+        if turtle.up() then
+            placeBlock(turtle.placeDown)
+        elseif turtle.back() then
+            placeBlock()
+        elseif turtle.turnLeft() and turtle.back() then
+            placeBlock()
+        elseif ta.uTurn() and turtle.back() then
+            placeBlock()
+        elseif turtle.down() then
+            placeBlock(turtle.placeUp)
+        end
     end
 end
