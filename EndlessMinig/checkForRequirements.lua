@@ -54,3 +54,9 @@ if item == nil or item.name ~= ENDERCHEST_ID or not isEnderChest() then
 elseif item.count > 1 then
     turtle.drop(item.count - 1)
 end
+
+turtle.select(16)
+for i = 5, 16 do
+    turtle.select(i)
+    turtle.drop()
+end
