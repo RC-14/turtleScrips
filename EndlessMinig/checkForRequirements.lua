@@ -13,3 +13,8 @@ local function isEnderChest()
 
     return state.type == 'ender_chest'
 end
+
+local function fail(message)
+    turtle.drop()
+    error(message)
+end
