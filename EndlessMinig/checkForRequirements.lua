@@ -19,6 +19,8 @@ local function fail(message)
     error(message)
 end
 
+ta.uTurn()
+
 turtle.select(1)
 local item = turtle.getItemDetail()
 
@@ -79,3 +81,5 @@ if item == nil or hasPickaxe and item.name ~= CHUNKLOADER_ID or not hasPickaxe a
     fail('Wrong tools')
 end
 turtle.equipLeft()
+
+ta.uTurn()
