@@ -6,7 +6,7 @@ local ENDERCHEST_ID = 'enderstorage:ender_storage'
 local CHUNKLOADER_ID = 'peripheralsplusone:chunk_loader_upgrade'
 local PICKAXE_ID = 'minecraft:diamond_pickaxe'
 
-local function isEnderChest()
+local function isEnderChest() -- required because Ender Chest and Ender Tank share the same item ID
     turtle.place()
     local state = turtle.inspect().state
     turtle.dig()
@@ -21,6 +21,13 @@ end
 
 ta.uTurn()
 
+--[[ Check for the required items
+    Slot 1: Enderchest for items
+    Slot 2: Turtle Charger
+    Slot 3: Energy Cell
+    Slot 4: Enderchest for energy stuff
+--]]
+-- Ender Chest for items
 turtle.select(1)
 local item = turtle.getItemDetail()
 
@@ -30,6 +37,7 @@ elseif item.count > 1 then
     turtle.drop(item.count - 1)
 end
 
+-- Turtle Charger
 turtle.select(2)
 item = turtle.getItemDetail()
 
@@ -39,6 +47,7 @@ elseif item.count > 1 then
     turtle.drop(item.count - 1)
 end
 
+-- Energy Cell
 turtle.select(3)
 item = turtle.getItemDetail()
 
@@ -48,6 +57,7 @@ elseif item.count > 1 then
     turtle.drop(item.count - 1)
 end
 
+-- Ender Chest for energy stuff
 turtle.select(4)
 item = turtle.getItemDetail()
 
@@ -57,12 +67,14 @@ elseif item.count > 1 then
     turtle.drop(item.count - 1)
 end
 
+-- Throw away all other items
 turtle.select(16)
 for i = 5, 16 do
     turtle.select(i)
     turtle.drop()
 end
 
+-- Check for Chunk Loader and Pickaxe
 local hasPickaxe = false
 
 turtle.equipRight()
@@ -81,5 +93,7 @@ if item == nil or hasPickaxe and item.name ~= CHUNKLOADER_ID or not hasPickaxe a
     fail('Wrong tools')
 end
 turtle.equipLeft()
+
+-- Success! we have erverything we need
 
 ta.uTurn()
