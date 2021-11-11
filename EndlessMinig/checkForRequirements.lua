@@ -60,3 +60,22 @@ for i = 5, 16 do
     turtle.select(i)
     turtle.drop()
 end
+
+local hasPickaxe = false
+
+turtle.equipRight()
+item = turtle.getItemDetail()
+if item == nil or item.name ~= CHUNKLOADER_ID and item.name ~= PICKAXE_ID then
+    turtle.equipRight()
+    fail('Wrong/No tools')
+end
+hasPickaxe = item.name == PICKAXE_ID
+turtle.equipRight()
+
+turtle.equipLeft()
+item = turtle.getItemDetail()
+if item == nil or hasPickaxe and item.name ~= CHUNKLOADER_ID or not hasPickaxe and item.name ~= PICKAXE_ID then
+    turtle.equipLeft()
+    fail('Wrong tools')
+end
+turtle.equipLeft()
