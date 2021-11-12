@@ -1,3 +1,13 @@
+--[[
+    This has its own file because I think this can be done more user friendly.
+    
+    Examples:
+     - Get files from all over the inventory and place them in the right slots
+     - Check the chests (empty / contains required items)
+     - Somehow manage to distinguish Ender Chests with diffrent color codes
+     - Make sure we can access the Ender Chests
+     - ...
+--]]
 local ta = require '/libraries/turtleAdditions'
 
 local TURTLECHARGER_ID = 'peripheralsplusone:rf_charger'
