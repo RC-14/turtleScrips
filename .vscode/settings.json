@@ -1,5 +1,5 @@
 {
-	"Lua.diagnostics.globals": ["turtle", "http", "fs", "shell", "sleep", "term"],
+	"Lua.diagnostics.globals": ["turtle", "http", "fs", "shell", "sleep", "term", "multishell"],
 	"Lua.diagnostics.disable": ["undefined-field"],
 	"Lua.completion.autoRequire": false
 }
