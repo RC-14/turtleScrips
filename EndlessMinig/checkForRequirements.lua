@@ -31,6 +31,10 @@ end
 
 ta.uTurn()
 
+if not ta.isAdvanced then
+    error('not an advanced turtle')
+end
+
 --[[ Check for the required items
     Slot 1: Enderchest for items
     Slot 2: Turtle Charger
