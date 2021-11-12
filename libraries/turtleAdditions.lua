@@ -4,6 +4,8 @@ end
 
 local ta = {}
 
+ta.isAdvanced = not (not multishell or false)
+
 function ta.searchInventoryFor(itemID) -- Searches the inventory for slots with items that have the given item id and returns a table with the results.
     local slots = {}
 
