@@ -1,3 +1,7 @@
+if not turtle then
+    error('this is not a turtle')
+end
+
 local ta = {}
 
 function ta.searchInventoryFor(itemID) -- Searches the inventory for slots with items that have the given item id and returns a table with the results.
