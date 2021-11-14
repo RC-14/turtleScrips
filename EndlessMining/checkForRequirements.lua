@@ -18,7 +18,8 @@ local PICKAXE_ID = 'minecraft:diamond_pickaxe'
 
 local function isEnderChest() -- required because Ender Chest and Ender Tank share the same item ID
     turtle.place()
-    local state = turtle.inspect().state
+    local _, state = turtle.inspect()
+    state = state.state
     turtle.dig()
 
     return state.type == 'ender_chest'
