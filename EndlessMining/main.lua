@@ -15,7 +15,7 @@ local function clearInventory()
     -- Drop all unnecessary items
     for i = 1, 16 do
         local item = turtle.getItemDetail(i)
-        if item ~= nil and item.name ~= CHARGER_ID or item.name ~= ENERGYCELL_ID or item.name ~= ENDERCHEST_ID then
+        if item ~= nil and (item.name ~= CHARGER_ID or item.name ~= ENERGYCELL_ID or item.name ~= ENDERCHEST_ID) then
             turtle.select(i)
             turtle.drop()
         end
