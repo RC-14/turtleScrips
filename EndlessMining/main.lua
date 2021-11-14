@@ -239,6 +239,8 @@ while true do
     turtle.turnRight()
     turtle.select(ENERGYCELL_SLOT)
     turtle.suck()
+    turtle.select(CHARGER_SLOT)
+    turtle.suck()
     turtle.select(ENERGYCHEST_SLOT)
     dig.forward()
 
