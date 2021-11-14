@@ -75,7 +75,7 @@ for i, filename in ipairs(libraries) do -- download all libraries to the tempora
     if not success then -- print error message and info
         print('ERROR: ' .. error)
         print(reason)
-        print('File:' .. filename)
+        print('File: ' .. filename)
         print('Path: ' .. tmpDir .. librariesPath)
         print('URL: ' .. baseURL .. librariesPath .. filename)
 
@@ -93,7 +93,7 @@ if not error then
         if not success then -- print error message and info
             print('ERROR: ' .. error)
             print(reason)
-            print('File:' .. filename)
+            print('File: ' .. filename)
             print('Path: ' .. tmpDir .. filesPath)
             print('URL: ' .. baseURL .. filesPath .. '/' .. filename)
 
@@ -118,5 +118,3 @@ end
 
 fs.delete(tmpDir .. librariesPath) -- delete temporary files and folders
 fs.delete(tmpDir .. filesPath)
-
-return error and 1 or 0 -- return 1 if there was an error and 0 if not
