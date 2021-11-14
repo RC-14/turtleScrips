@@ -22,7 +22,7 @@ function ta.searchInventoryFor(itemID) -- Searches the inventory for slots with 
     for i = 1, 16 do
         local item = turtle.getItemDetail(i)
 
-        if not item == nil and item.name == itemID then
+        if item ~= nil and item.name == itemID then
             slots[#slots + 1] = i
         end
     end
