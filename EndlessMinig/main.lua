@@ -100,6 +100,28 @@ local function clearInventory()
     end
 end
 
+local move = {}
+function move.forward()
+    if not turtle.forward() then
+        error("Couldn't move forward")
+    end
+end
+function move.back()
+    if not turtle.back() then
+        error("Couldn't move back")
+    end
+end
+function move.up()
+    if not turtle.up() then
+        error("Couldn't move up")
+    end
+end
+function move.down()
+    if not turtle.down() then
+        error("Couldn't move down")
+    end
+end
+
 local hasRequiredItems = shell.run('/' .. fs.getDir(shell.getRunningProgram()) .. '/checkForRequirements.lua')
 
 if not hasRequiredItems then
