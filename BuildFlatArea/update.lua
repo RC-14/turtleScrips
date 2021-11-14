@@ -27,6 +27,9 @@ local function download(url, path)
     end
 
     local response = http.get(url)
+    if response == nil then
+        return false, 'unnkown', 'http api get returned nil'
+    end
     local status = response.getResponseCode()
 
     if status ~= 0 and (status < 200 or status >= 400) then
