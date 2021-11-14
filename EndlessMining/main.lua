@@ -1,5 +1,7 @@
 local ta = require '/libraries/turtleAdditions'
 
+local diameter = ...
+
 local CHARGER_ID = 'peripheralsplusone:rf_charger'
 local ENERGYCELL_ID = 'thermalexpansion:cell'
 local ENDERCHEST_ID = 'enderstorage:ender_storage'
@@ -165,11 +167,14 @@ function turtle.digDown()
     return success
 end
 
-local hasRequiredItems = shell.run('/' .. fs.getDir(shell.getRunningProgram()) .. '/checkForRequirements.lua')
+local fulfillsRequirements =
+    shell.run('/' .. fs.getDir(shell.getRunningProgram()) .. '/checkForRequirements.lua', diameter)
 
-if not hasRequiredItems then
+if not fulfillsRequirements then
     error()
 end
+
+diameter = math.floor(diameter) -- make sure we have an integer
 
 turtle.select(16)
 
@@ -216,7 +221,7 @@ while true do
     ta.uTurn()
 
     -- mine a chunk
-    shell.run('excavate', '16')
+    shell.run('excavate', diameter)
     ta.uTurn()
 
     -- if necessary wait for all items to be dropped
@@ -239,10 +244,10 @@ while true do
     turtle.dig()
 
     clearInventory()
+    turtle.select(16)
 
     -- move forward to the next position
-    turtle.select(16)
-    for i = 1, 16 do
+    for i = 1, diameter do
         while not turtle.forward() do
             turtle.dig()
         end

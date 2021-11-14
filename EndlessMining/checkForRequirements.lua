@@ -10,6 +10,8 @@
 --]]
 local ta = require '/libraries/turtleAdditions'
 
+local diameter = ...
+
 local TURTLECHARGER_ID = 'peripheralsplusone:rf_charger'
 local ENERGYCELL_ID = 'thermalexpansion:cell'
 local ENDERCHEST_ID = 'enderstorage:ender_storage'
@@ -30,11 +32,16 @@ local function fail(message)
     error(message)
 end
 
-ta.uTurn()
-
 if not ta.isAdvanced then
     error('not an advanced turtle')
 end
+
+diameter = math.floor(diameter)
+if diameter < 1 then
+    error("diameter can't be lower than 1")
+end
+
+ta.uTurn()
 
 --[[ Check for the required items
     Slot 1: Enderchest for items
