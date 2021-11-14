@@ -170,5 +170,3 @@ local hasRequiredItems = shell.run('/' .. fs.getDir(shell.getRunningProgram()) .
 if not hasRequiredItems then
     error()
 end
-
-turtle.select(1)
