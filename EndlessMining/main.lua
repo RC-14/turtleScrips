@@ -131,7 +131,7 @@ for key, value in pairs(turtle) do
         turtle.orig[key] = value
     end
 end
-
+turtle.orig.select(turtle.getSelectedSlot())
 -- overwrite dig functions because sand and gravel exist
 function turtle.dig()
     local result
