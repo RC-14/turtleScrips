@@ -170,3 +170,81 @@ local hasRequiredItems = shell.run('/' .. fs.getDir(shell.getRunningProgram()) .
 if not hasRequiredItems then
     error()
 end
+
+turtle.select(16)
+
+while true do
+    -- recharge
+    turtle.dig()
+    turtle.select(ENERGYCELL_SLOT)
+    turtle.place()
+    turtle.select(16)
+    turtle.digUp()
+    move.up()
+    turtle.select(CHARGER_SLOT)
+    turtle.placeDown()
+
+    print('Recharging...')
+    while turtle.getFuelLevel() < turtle.getFuelLimit() do
+        sleep(10)
+    end
+    print('Full')
+
+    turtle.digDown()
+    move.down()
+    turtle.select(ENERGYCELL_SLOT)
+    turtle.dig()
+
+    clearInventory()
+
+    -- put the energy cell in the energy chest
+    turtle.select(ENERGYCHEST_SLOT)
+    turtle.place()
+    turtle.select(ENERGYCELL_SLOT)
+    turtle.drop()
+    turtle.select(CHARGER_SLOT)
+    turtle.drop()
+
+    -- prepare to start mining
+    turtle.select(16)
+    turtle.turnRight()
+    turtle.dig()
+    move.forward()
+    ta.uTurn()
+    turtle.select(ITEMCHEST_SLOT)
+    turtle.place()
+    ta.uTurn()
+
+    -- mine a chunk
+    shell.run('excavate', '16')
+    ta.uTurn()
+
+    -- if necessary wait for all items to be dropped
+    while not ta.isInventoryEmpty() do
+        print('Unloading... (Chest is full)')
+        for i = 1, 16 do
+            turtle.select(i)
+            turtle.drop()
+        end
+    end
+
+    -- get all required items again
+    turtle.select(ITEMCHEST_SLOT)
+    turtle.dig()
+    move.forward()
+    turtle.turnRight()
+    turtle.select(ENERGYCELL_SLOT)
+    turtle.suck()
+    turtle.select(ENERGYCHEST_SLOT)
+    turtle.dig()
+
+    clearInventory()
+
+    -- move forward to the next position
+    turtle.select(16)
+    for i = 1, 16 do
+        while not turtle.forward() do
+            turtle.dig()
+        end
+    end
+end
