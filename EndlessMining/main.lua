@@ -22,7 +22,8 @@ local function clearInventory()
     end
 
     -- Check for Turtle Charger
-    local slot = ta.searchInventoryFor(CHARGER_ID)[1]
+    local slot = ta.searchInventoryFor(CHARGER_ID)
+    slot = slot[1]
 
     if slot == nil then
         error('Lost Turtle Charger')
@@ -33,7 +34,8 @@ local function clearInventory()
     end
 
     -- Check for Energy Cell
-    slot = ta.searchInventoryFor(ENERGYCELL_ID)[1]
+    slot = ta.searchInventoryFor(ENERGYCELL_ID)
+    slot = slot[1]
 
     if slot == nil then
         error('Lost Energy Cell')
