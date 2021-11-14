@@ -181,12 +181,16 @@ while true do
     -- recharge
     dig.forward()
     turtle.select(ENERGYCELL_SLOT)
-    turtle.place()
+    if not turtle.place() then
+        error("Couldn't place Energy Cell")
+    end
     turtle.select(16)
     dig.up()
     move.up()
     turtle.select(CHARGER_SLOT)
-    turtle.placeDown()
+    if not turtle.placeDown() then
+        error("Couldn't place Charger")
+    end
 
     print('Recharging...')
     while turtle.getFuelLevel() < turtle.getFuelLimit() do
@@ -203,7 +207,9 @@ while true do
 
     -- put the energy cell and the charger in the energy chest
     turtle.select(ENERGYCHEST_SLOT)
-    turtle.place()
+    if not turtle.place() then
+        error("Couldn't place Energy Chest")
+    end
     turtle.select(ENERGYCELL_SLOT)
     turtle.drop()
     turtle.select(CHARGER_SLOT)
@@ -216,7 +222,9 @@ while true do
     move.forward()
     ta.uTurn()
     turtle.select(ITEMCHEST_SLOT)
-    turtle.place()
+    if not turtle.place() then
+        error("Couldn't place Item Chest")
+    end
     ta.uTurn()
 
     -- mine a chunk
