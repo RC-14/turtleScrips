@@ -130,6 +130,41 @@ for key, value in pairs(turtle) do
     end
 end
 
+-- overwrite dig functions because sand and gravel exist
+function turtle.dig()
+    local result
+    local success
+
+    repeat
+        success = turtle.orig.dig()
+        result = result or success
+    until not success
+
+    return success
+end
+function turtle.digUp()
+    local result
+    local success
+
+    repeat
+        success = turtle.orig.digUp()
+        result = result or success
+    until not success
+
+    return success
+end
+function turtle.digDown()
+    local result
+    local success
+
+    repeat
+        success = turtle.orig.digDown()
+        result = result or success
+    until not success
+
+    return success
+end
+
 local hasRequiredItems = shell.run('/' .. fs.getDir(shell.getRunningProgram()) .. '/checkForRequirements.lua')
 
 if not hasRequiredItems then
