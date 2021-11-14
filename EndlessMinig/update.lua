@@ -9,7 +9,7 @@ local librariesPath = '/libraries'
 
 --[[
 	All files in the project folder (eg. "/EndlessMining")
-	except "run.lua".
+	except "update.lua".
 ]] local files = {
     'main.lua'
 }
