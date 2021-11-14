@@ -201,7 +201,7 @@ while true do
 
     clearInventory()
 
-    -- put the energy cell in the energy chest
+    -- put the energy cell and the charger in the energy chest
     turtle.select(ENERGYCHEST_SLOT)
     turtle.place()
     turtle.select(ENERGYCELL_SLOT)
