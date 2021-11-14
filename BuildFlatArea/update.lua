@@ -28,7 +28,7 @@ local function download(url, path)
 
     local response = http.get(url)
     if response == nil then
-        return false, 'unnkown', 'http api get returned nil'
+        return false, 'unnkown', 'http.get returned nil'
     end
     local status = response.getResponseCode()
 
