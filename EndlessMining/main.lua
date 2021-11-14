@@ -100,6 +100,8 @@ local function clearInventory()
     if not eChest then
         moveToSlot(ENDERCHEST_ID, ENERGYCHEST_SLOT, ITEMCHEST_SLOT)
     end
+
+    turtle.select(origSlot)
 end
 
 local move = {}
