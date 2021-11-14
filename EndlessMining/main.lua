@@ -238,6 +238,7 @@ while true do
             turtle.select(i)
             turtle.drop()
         end
+        sleep(3)
     end
 
     -- get all required items again
