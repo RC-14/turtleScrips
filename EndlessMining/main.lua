@@ -61,6 +61,7 @@ local function clearInventory()
     end
 
     if iChest and charger and cell and eChest then -- return if everything is in the right slot
+        turtle.select(origSlot)
         return
     end
 
