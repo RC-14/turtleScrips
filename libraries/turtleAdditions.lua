@@ -6,6 +6,16 @@ local ta = {}
 
 ta.isAdvanced = not (not multishell or false) -- double negation to make sure we have a boolean
 
+function ta.isInventoryEmpty() -- Check if the inventory is empty
+    for i = 1, 16 do
+        if turtle.getItemCount(i) > 0 then
+            return false
+        end
+    end
+
+    return true
+end
+
 function ta.searchInventoryFor(itemID) -- Searches the inventory for slots with items that have the given item id and returns a table with the results.
     local slots = {}
 
