@@ -17,7 +17,9 @@ local librariesPath = '/libraries'
 --[[
 	All files in the libraries folder
 	that are required by the program.
-]] local libraries = {}
+]] local libraries = {
+    'turtleAdditions.lua'
+}
 
 local function download(url, path)
     if url == nil or path == nil then
