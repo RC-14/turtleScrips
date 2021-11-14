@@ -122,6 +122,14 @@ function move.down()
     end
 end
 
+-- make a copy of turtle
+turtle.orig = {}
+for key, value in pairs(turtle) do
+    if key ~= 'orig' then
+        turtle.orig[key] = value
+    end
+end
+
 local hasRequiredItems = shell.run('/' .. fs.getDir(shell.getRunningProgram()) .. '/checkForRequirements.lua')
 
 if not hasRequiredItems then
