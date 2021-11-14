@@ -124,43 +124,37 @@ function move.down()
     end
 end
 
--- make a copy of turtle
-turtle.orig = {}
-for key, value in pairs(turtle) do
-    if key ~= 'orig' then
-        turtle.orig[key] = value
-    end
-end
+-- Make better dig functions because sand and gravel exist
+local dig = {}
 
--- overwrite dig functions because sand and gravel exist
-function turtle.dig()
+function dig.forward()
     local result
     local success
 
     repeat
-        success = turtle.orig.dig()
+        success = turtle.dig()
         result = result or success
     until not success
 
     return success
 end
-function turtle.digUp()
+function dig.up()
     local result
     local success
 
     repeat
-        success = turtle.orig.digUp()
+        success = turtle.digUp()
         result = result or success
     until not success
 
     return success
 end
-function turtle.digDown()
+function dig.down()
     local result
     local success
 
     repeat
-        success = turtle.orig.digDown()
+        success = turtle.digDown()
         result = result or success
     until not success
 
@@ -180,11 +174,11 @@ turtle.select(16)
 
 while true do
     -- recharge
-    turtle.dig()
+    dig.forward()
     turtle.select(ENERGYCELL_SLOT)
     turtle.place()
     turtle.select(16)
-    turtle.digUp()
+    dig.up()
     move.up()
     turtle.select(CHARGER_SLOT)
     turtle.placeDown()
@@ -195,10 +189,10 @@ while true do
     end
     print('Full')
 
-    turtle.digDown()
+    dig.down()
     move.down()
     turtle.select(ENERGYCELL_SLOT)
-    turtle.dig()
+    dig.forward()
 
     clearInventory()
 
@@ -213,7 +207,7 @@ while true do
     -- prepare to start mining
     turtle.select(16)
     turtle.turnRight()
-    turtle.dig()
+    dig.forward()
     move.forward()
     ta.uTurn()
     turtle.select(ITEMCHEST_SLOT)
@@ -235,13 +229,13 @@ while true do
 
     -- get all required items again
     turtle.select(ITEMCHEST_SLOT)
-    turtle.dig()
+    dig.forward()
     move.forward()
     turtle.turnRight()
     turtle.select(ENERGYCELL_SLOT)
     turtle.suck()
     turtle.select(ENERGYCHEST_SLOT)
-    turtle.dig()
+    dig.forward()
 
     clearInventory()
     turtle.select(16)
@@ -249,7 +243,7 @@ while true do
     -- move forward to the next position
     for i = 1, diameter do
         while not turtle.forward() do
-            turtle.dig()
+            dig.forward()
         end
     end
 end
