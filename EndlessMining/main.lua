@@ -246,10 +246,21 @@ while true do
     dig.forward()
     move.forward()
     turtle.turnRight()
+
     turtle.select(ENERGYCELL_SLOT)
-    turtle.suck()
-    turtle.select(CHARGER_SLOT)
-    turtle.suck()
+    if not turtle.suck() then
+        error('Energy Chest is empty')
+    elseif turtle.getItemDetail().name == ENERGYCELL_ID then
+        turtle.select(CHARGER_SLOT)
+        turtle.suck()
+    elseif turtle.getItemDetail().name == CHARGER_ID then
+        turtle.transferTo(CHARGER_SLOT)
+
+        repeat
+            print('Waiting for Energy Cell')
+            sleep(10)
+        until turtle.suck()
+    end
     turtle.select(ENERGYCHEST_SLOT)
     dig.forward()
 
