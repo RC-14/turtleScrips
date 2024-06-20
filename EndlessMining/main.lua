@@ -22,7 +22,7 @@ local function clearInventory()
     end
 
     -- Check for Turtle Charger
-    local slot = ta.searchInventoryFor(CHARGER_ID)
+    local slot = ta.getAllSlotsWith(CHARGER_ID)
     slot = slot[1]
 
     if slot == nil then
@@ -34,7 +34,7 @@ local function clearInventory()
     end
 
     -- Check for Energy Cell
-    slot = ta.searchInventoryFor(ENERGYCELL_ID)
+    slot = ta.getAllSlotsWith(ENERGYCELL_ID)
     slot = slot[1]
 
     if slot == nil then
@@ -46,7 +46,7 @@ local function clearInventory()
     end
 
     -- Check for Ender Chests
-    local slots = ta.searchInventoryFor(ENDERCHEST_ID)
+    local slots = ta.getAllSlotsWith(ENDERCHEST_ID)
 
     if #slots < 2 then
         error('Lost Ender Chest(s)')
@@ -78,7 +78,7 @@ local function clearInventory()
         end
 
         local itemSlot
-        for i, v in ipairs(ta.searchInventoryFor(id)) do
+        for i, v in ipairs(ta.getAllSlotsWith(id)) do
             if v ~= ignoreSlot then
                 itemSlot = v
             end

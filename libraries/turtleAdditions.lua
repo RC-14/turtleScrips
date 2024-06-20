@@ -16,7 +16,32 @@ function ta.isInventoryEmpty() -- Check if the inventory is empty
     return true
 end
 
-function ta.searchInventoryFor(itemID) -- Searches the inventory for slots with items that have the given item id and returns a table with the results.
+function ta.getFirstSlotWith(itemID)
+	for i = 1, 16 do
+		local item = turtle.getItemDetail(i)
+
+		if item ~= nil and item.name == itemID then
+			return i
+		end
+	end
+
+	return nil
+end
+
+function ta.getNextSlotWith(itemID)
+	for i = 1, 16 do
+		local slot = (i + turtle.getSelectedSlot()) % 16 + 1
+		local item = turtle.getItemDetail(slot)
+
+		if item ~= nil and item.name == itemID then
+			return slot
+		end
+	end
+
+	return nil
+end
+
+function ta.getAllSlotsWith(itemID) -- Searches the inventory for slots with items that have the given item id and returns a table with the results.
     local slots = {}
 
     for i = 1, 16 do
@@ -62,7 +87,7 @@ end
 
 function ta.placeItem(itemID) -- Searches the inventory for the specified item and tries to place it in front of the turtle.
     local origSlot = turtle.getSelectedSlot()
-    local slots = ta.searchInventoryFor(itemID)
+    local slots = ta.getAllSlotsWith(itemID)
 
     if #slots == 0 then
         return false
@@ -78,7 +103,7 @@ end
 
 function ta.placeItemUp(itemID) -- Searches the inventory for the specified item and tries to place it above the turtle.
     local origSlot = turtle.getSelectedSlot()
-    local slots = ta.searchInventoryFor(itemID)
+    local slots = ta.getAllSlotsWith(itemID)
 
     if #slots == 0 then
         return false
@@ -94,7 +119,7 @@ end
 
 function ta.placeItemDown(itemID) -- Searches the inventory for the specified item and tries to place it below the turtle.
     local origSlot = turtle.getSelectedSlot()
-    local slots = ta.searchInventoryFor(itemID)
+    local slots = ta.getAllSlotsWith(itemID)
 
     if #slots == 0 then
         return false
